@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="AS-Speech: Adaptive Style For Speech Synthesis.">
+  <meta name="keywords" content="Nerfies, D-NeRF, NeRF">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AS-Speech</title>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-L7749G0HJZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-L7749G0HJZ');
+</script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-body" style="padding-bottom: 24px;">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-2 publication-title">AS-Speech: Adaptive Style For Speech Synthesis</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="section" style="padding-top: 80px;">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            In recent years, there has been significant progress in Text-to-Speech (TTS) synthesis technology,
+            enabling the high-quality synthesis of voices in common scenarios.
+            In unseen situations, Adaptive TTS requires a strong generalization capability to speaker style characteristics.
+            However, the existing adaptive methods can only extract and integrate coarse-grained timbre or mixed prosody information separately,
+            which brings modeling challenges.
+            In this paper, we propose AS-Speech,
+            an adaptive style methodology based on diffusion generative modeling for text-to-speech synthesis.
+            Specifically, AS-Speech can accurately simulate style characteristics through fine-grained timbre features based on text and global rhythm information,
+            and achieve high-fidelity speech synthesis through the diffusion model.
+            Experiments show that the proposed model produces voices with higher similarity in terms of timbre and rhythm compared to a series of adaptive TTS models while maintaining the naturalness of synthetic speech.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="sectiont">
+  <div class="container is-max-desktop is-centered has-text-centered">
+    <div class="hero-body">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-full">
+          <h2 class="title is-3">Model Overview</h2>
+          <img src="./static/images/model.jpg"
+                    class="interpolation-image"
+                    alt="Interpolate start reference image."/>
+          <h2 class="has-text-centered is-8">
+<!--            Update soon.-->
+          </h2>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<div class="hero-body">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column">
+        <h2 class="title is-3">Zero Shot Demo</h2>
+        <div class="content">
+          <p>
+            Audio Samples for VCTK (English) Test-Set (unseen)
+          </p>
+          <div class="has-text-left">
+            <p>
+              <h4>Transcriptions:</h4>
+              <li>p225: Two important points remained to be settled with that nation: their delivery of the king, and the estimation of their arrears.</li>
+              <li>p234: He knew now that his absence, for as long as he had to be away, would be covered up and satisfactorily accounted for.</li>
+              <li>p245: His soul was swooning into some new world, fantastic, dim, uncertain as under sea, traversed by cloudy shapes and beings.</li>
+              <li>p248: The silence never lasts long, however, for the feminine desire to talk it over usually gets the better of the deepest emotion.</li>
+              <li>p294: One perceives, without understanding it, a hideous murmur, sounding almost like human accents, but more nearly resembling a howl than an articulate word.</li>
+              <li>p302: The Land decree of the Congress of Soviets is identical in its fundamentals with the decisions of the first Peasants' Congress.</li>
+              <li>p335: I will briefly describe them to you, and you shall read the account of them at your leisure in the sacred registers.</li>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="columns is-centered has-text-centered is-full-width">
+      <table class="table" style="background-color: transparent;">
+        <thead>
+          <tr>
+            <th align="center"><strong>Name</strong></th>
+            <th align="center"><strong>Prompt</strong></th>
+            <th align="center"><strong>StyleSpeech</strong></th>
+            <th align="center"><strong>YourTTS</strong></th>
+            <th align="center"><strong>AS_Xvector</strong></th>
+            <th align="center"><strong>AS_ASE</strong></th>
+            <th align="center"><strong>AS-Speech</strong></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td width="28%" style="text-align: center;"><p>p225</p></td>
+            <td width="12%" style="text-align: center;"><audio controls="" ><source src="static/audio_sample/zero_shot/Prompt/gt_p225_005.wav" type="audio/wav"></audio></td>
+            <td width="12%" style="text-align: center;"><audio controls="" ><source src="static/audio_sample/zero_shot/StyleSpeech/stylespeech_p225_26.wav" type="audio/wav"></audio></td>
+            <td width="12%" style="text-align: center;"><audio controls="" ><source src="static/audio_sample/zero_shot/YourTTS/yourtts_p225_26.wav" type="audio/wav"></audio></td>
+            <td width="12%" style="text-align: center;"><audio controls="" ><source src="static/audio_sample/zero_shot/AS_Xvector/ablation_xvector_p225_26.wav" type="audio/wav"></audio></td>
+            <td width="12%" style="text-align: center;"><audio controls="" ><source src="static/audio_sample/zero_shot/AS_ASE/ablation_spkemb_p225_26.wav" type="audio/wav"></audio></td>
+            <td width="12%" style="text-align: center;"><audio controls="" ><source src="static/audio_sample/zero_shot/AS-Speech/ours_p225_26.wav" type="audio/wav"></audio></td>
+          </tr>
+          <tr>
+            <td width="28%" style="text-align: center;"><p>p234</p></td>
+            <td width="12%" style="text-align: center;"><audio controls="" ><source src="static/audio_sample/zero_shot/Prompt/gt_p234_005.wav" type="audio/wav"></audio></td>
+            <td width="12%" style="text-align: center;"><audio controls="" ><source src="static/audio_sample/zero_shot/StyleSpeech/stylespeech_p234_37.wav" type="audio/wav"></audio></td>
+            <td width="12%" style="text-align: center;"><audio controls="" ><source src="static/audio_sample/zero_shot/YourTTS/yourtts_p234_37.wav" type="audio/wav"></audio></td>
+            <td width="12%" style="text-align: center;"><audio controls="" ><source src="static/audio_sample/zero_shot/AS_Xvector/ablation_xvector_p234_37.wav" type="audio/wav"></audio></td>
+            <td width="12%" style="text-align: center;"><audio controls="" ><source src="static/audio_sample/zero_shot/AS_ASE/ablation_spkemb_p234_37.wav" type="audio/wav"></audio></td>
+            <td width="12%" style="text-align: center;"><audio controls="" ><source src="static/audio_sample/zero_shot/AS-Speech/ours_p234_37.wav" type="audio/wav"></audio></td>
+          </tr>
+          <tr>
+            <td width="28%" style="text-align: center;"><p>p245</p></td>
+            <td width="12%" style="text-align: center;"><audio controls="" ><source src="static/audio_sample/zero_shot/Prompt/gt_p245_005.wav" type="audio/wav"></audio></td>
+            <td width="12%" style="text-align: center;"><audio controls="" ><source src="static/audio_sample/zero_shot/StyleSpeech/stylespeech_p245_12.wav" type="audio/wav"></audio></td>
+            <td width="12%" style="text-align: center;"><audio controls="" ><source src="static/audio_sample/zero_shot/YourTTS/yourtts_p245_12.wav" type="audio/wav"></audio></td>
+            <td width="12%" style="text-align: center;"><audio controls="" ><source src="static/audio_sample/zero_shot/AS_Xvector/ablation_xvector_p245_12.wav" type="audio/wav"></audio></td>
+            <td width="12%" style="text-align: center;"><audio controls="" ><source src="static/audio_sample/zero_shot/AS_ASE/ablation_spkemb_p245_12.wav" type="audio/wav"></audio></td>
+            <td width="12%" style="text-align: center;"><audio controls="" ><source src="static/audio_sample/zero_shot/AS-Speech/ours_p245_12.wav" type="audio/wav"></audio></td>
+          </tr>
+          <tr>
+            <td width="28%" style="text-align: center;"><p>p248</p></td>
+            <td width="12%" style="text-align: center;"><audio controls="" ><source src="static/audio_sample/zero_shot/Prompt/gt_p248_005.wav" type="audio/wav"></audio></td>
+            <td width="12%" style="text-align: center;"><audio controls="" ><source src="static/audio_sample/zero_shot/StyleSpeech/stylespeech_p248_48.wav" type="audio/wav"></audio></td>
+            <td width="12%" style="text-align: center;"><audio controls="" ><source src="static/audio_sample/zero_shot/YourTTS/yourtts_p248_48.wav" type="audio/wav"></audio></td>
+            <td width="12%" style="text-align: center;"><audio controls="" ><source src="static/audio_sample/zero_shot/AS_Xvector/ablation_xvector_p248_48.wav" type="audio/wav"></audio></td>
+            <td width="12%" style="text-align: center;"><audio controls="" ><source src="static/audio_sample/zero_shot/AS_ASE/ablation_spkemb_p248_48.wav" type="audio/wav"></audio></td>
+            <td width="12%" style="text-align: center;"><audio controls="" ><source src="static/audio_sample/zero_shot/AS-Speech/ours_p248_48.wav" type="audio/wav"></audio></td>
+          </tr>
+          <tr>
+            <td width="28%" style="text-align: center;"><p>p294</p></td>
+            <td width="12%" style="text-align: center;"><audio controls="" ><source src="static/audio_sample/zero_shot/Prompt/gt_p294_005.wav" type="audio/wav"></audio></td>
+            <td width="12%" style="text-align: center;"><audio controls="" ><source src="static/audio_sample/zero_shot/StyleSpeech/stylespeech_p294_31.wav" type="audio/wav"></audio></td>
+            <td width="12%" style="text-align: center;"><audio controls="" ><source src="static/audio_sample/zero_shot/YourTTS/yourtts_p294_31.wav" type="audio/wav"></audio></td>
+            <td width="12%" style="text-align: center;"><audio controls="" ><source src="static/audio_sample/zero_shot/AS_Xvector/ablation_xvector_p294_31.wav" type="audio/wav"></audio></td>
+            <td width="12%" style="text-align: center;"><audio controls="" ><source src="static/audio_sample/zero_shot/AS_ASE/ablation_spkemb_p294_31.wav" type="audio/wav"></audio></td>
+            <td width="12%" style="text-align: center;"><audio controls="" ><source src="static/audio_sample/zero_shot/AS-Speech/ours_p294_31.wav" type="audio/wav"></audio></td>
+          </tr>
+          <tr>
+            <td width="28%" style="text-align: center;"><p>p302</p></td>
+            <td width="12%" style="text-align: center;"><audio controls="" ><source src="static/audio_sample/zero_shot/Prompt/gt_p302_005.wav" type="audio/wav"></audio></td>
+            <td width="12%" style="text-align: center;"><audio controls="" ><source src="static/audio_sample/zero_shot/StyleSpeech/stylespeech_p302_7.wav" type="audio/wav"></audio></td>
+            <td width="12%" style="text-align: center;"><audio controls="" ><source src="static/audio_sample/zero_shot/YourTTS/yourtts_p302_7.wav" type="audio/wav"></audio></td>
+            <td width="12%" style="text-align: center;"><audio controls="" ><source src="static/audio_sample/zero_shot/AS_Xvector/ablation_xvector_p302_7.wav" type="audio/wav"></audio></td>
+            <td width="12%" style="text-align: center;"><audio controls="" ><source src="static/audio_sample/zero_shot/AS_ASE/ablation_spkemb_p302_7.wav" type="audio/wav"></audio></td>
+            <td width="12%" style="text-align: center;"><audio controls="" ><source src="static/audio_sample/zero_shot/AS-Speech/ours_p302_7.wav" type="audio/wav"></audio></td>
+          </tr>
+          <tr>
+            <td width="28%" style="text-align: center;"><p>p335</p></td>
+            <td width="12%" style="text-align: center;"><audio controls="" ><source src="static/audio_sample/zero_shot/Prompt/gt_p335_005.wav" type="audio/wav"></audio></td>
+            <td width="12%" style="text-align: center;"><audio controls="" ><source src="static/audio_sample/zero_shot/StyleSpeech/stylespeech_p335_22.wav" type="audio/wav"></audio></td>
+            <td width="12%" style="text-align: center;"><audio controls="" ><source src="static/audio_sample/zero_shot/YourTTS/yourtts_p335_22.wav" type="audio/wav"></audio></td>
+            <td width="12%" style="text-align: center;"><audio controls="" ><source src="static/audio_sample/zero_shot/AS_Xvector/ablation_xvector_p335_23.wav" type="audio/wav"></audio></td>
+            <td width="12%" style="text-align: center;"><audio controls="" ><source src="static/audio_sample/zero_shot/AS_ASE/ablation_spkemb_p335_22.wav" type="audio/wav"></audio></td>
+            <td width="12%" style="text-align: center;"><audio controls="" ><source src="static/audio_sample/zero_shot/AS-Speech/ours_p335_22.wav" type="audio/wav"></audio></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column">
+          <h2 class="title is-3">Rhythm Demo</h2>
+          <div class="content">
+            <p>
+              Audio prompts from Style60 (Mandarin) Test-Set (unseen)
+            </p>
+            <div class="centered-text">
+              <h4>Transcriptions:</h4>
+              <ul>
+                <li>Neutral: 这肯定是处理宗教问题的理性态度，但尤里安毕竟是政客。</li>
+                <li>Happy: 祝我家调皮可爱的小孩儿生日快乐！</li>
+                <li>Angry: 奕北忿忿地想，他不会任他们真的逍遥三十天的，绝不！</li>
+                <li>Sad: 疫情一直不结束，公司发的旅游基金马上要过期了，运气真差！</li>
+                <li>Afraid: 她们接触到秦倚天的眼神威胁，立即又齐齐的停下了脚步。</li>
+                <li>News: 二是规范平台服务，拆除办事关卡。</li>
+                <li>Story: 当我闭上眼睛的时候，我将怀着感激的心情向他祈祷，感谢他。</li>
+                <li>Poetry: 我柔弱的心啊，请试着去忘记，请千万千万别再哭泣。</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="columns is-centered has-text-centered  is-full-width">
+        <table class="table" style="background-color: transparent;">
+          <thead>
+            <tr>
+              <th align="center"><strong>Style</strong></th>
+              <th align="center"><strong>Prompt</strong></th>
+              <th align="center"><strong>Gt (voc)</strong></th>
+              <th align="center"><strong>GradTTS</strong></th>
+              <th align="center"><strong>CSEDT</strong></th>
+              <th align="center"><strong>AS_wo_lort</strong></th>
+              <th align="center"><strong>AS-Speech</strong></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td width="28%" style="text-align: center;"><p>Neutral</p></td>
+              <td width="12%" style="text-align: center;"><audio controls="" ><source src="static/audio_sample/rhythm/Prompt/wav_gt_biaobei_tx_02040010108.wav" type="audio/wav"></audio></td>
+              <td width="12%" style="text-align: center;"><audio controls="" ><source src="static/audio_sample/rhythm/GT/wav_gt_biaobei_tx_02040010341.wav" type="audio/wav"></audio></td>
+              <td width="12%" style="text-align: center;"><audio controls="" ><source src="static/audio_sample/rhythm/GradTTS/wav_pred_biaobei_tx_02040010341.wav" type="audio/wav"></audio></td>
+              <td width="12%" style="text-align: center;"><audio controls="" ><source src="static/audio_sample/rhythm/CSEDT/wav_pred_biaobei_tx_02040010341.wav" type="audio/wav"></audio></td>
+              <td width="12%" style="text-align: center;"><audio controls="" ><source src="static/audio_sample/rhythm/AS_wo_lort/wav_pred_biaobei_tx_02040010341.wav" type="audio/wav"></audio></td>
+              <td width="12%" style="text-align: center;"><audio controls="" ><source src="static/audio_sample/rhythm/AS-Speech/wav_pred_biaobei_tx_02040010341.wav" type="audio/wav"></audio></td>
+            </tr>
+            <tr>
+              <td width="28%" style="text-align: center;"><p>Happy</p></td>
+              <td width="12%" style="text-align: center;"><audio controls="" ><source src="static/audio_sample/rhythm/Prompt/wav_gt_biaobei_tx_01010020421.wav" type="audio/wav"></audio></td>
+              <td width="12%" style="text-align: center;"><audio controls="" ><source src="static/audio_sample/rhythm/GT/wav_gt_biaobei_tx_01010020220.wav" type="audio/wav"></audio></td>
+              <td width="12%" style="text-align: center;"><audio controls="" ><source src="static/audio_sample/rhythm/GradTTS/wav_pred_biaobei_tx_01010020220.wav" type="audio/wav"></audio></td>
+              <td width="12%" style="text-align: center;"><audio controls="" ><source src="static/audio_sample/rhythm/CSEDT/wav_pred_biaobei_tx_01010020220.wav" type="audio/wav"></audio></td>
+              <td width="12%" style="text-align: center;"><audio controls="" ><source src="static/audio_sample/rhythm/AS_wo_lort/wav_pred_biaobei_tx_01010020220.wav" type="audio/wav"></audio></td>
+              <td width="12%" style="text-align: center;"><audio controls="" ><source src="static/audio_sample/rhythm/AS-Speech/wav_pred_biaobei_tx_01010020220.wav" type="audio/wav"></audio></td>
+            </tr>
+            <tr>
+              <td width="28%" style="text-align: center;"><p>Angry</p></td>
+              <td width="12%" style="text-align: center;"><audio controls="" ><source src="static/audio_sample/rhythm/Prompt/wav_gt_biaobei_tx_01020030006.wav" type="audio/wav"></audio></td>
+              <td width="12%" style="text-align: center;"><audio controls="" ><source src="static/audio_sample/rhythm/GT/wav_gt_biaobei_tx_01020030010.wav" type="audio/wav"></audio></td>
+              <td width="12%" style="text-align: center;"><audio controls="" ><source src="static/audio_sample/rhythm/GradTTS/wav_pred_biaobei_tx_01020030010.wav" type="audio/wav"></audio></td>
+              <td width="12%" style="text-align: center;"><audio controls="" ><source src="static/audio_sample/rhythm/CSEDT/wav_pred_biaobei_tx_01020030010.wav" type="audio/wav"></audio></td>
+              <td width="12%" style="text-align: center;"><audio controls="" ><source src="static/audio_sample/rhythm/AS_wo_lort/wav_pred_biaobei_tx_01020030010.wav" type="audio/wav"></audio></td>
+              <td width="12%" style="text-align: center;"><audio controls="" ><source src="static/audio_sample/rhythm/AS-Speech/wav_pred_biaobei_tx_01020030010.wav" type="audio/wav"></audio></td>
+            </tr>
+            <tr>
+              <td width="28%" style="text-align: center;"><p>Sad</p></td>
+              <td width="12%" style="text-align: center;"><audio controls="" ><source src="static/audio_sample/rhythm/Prompt/wav_gt_biaobei_tx_02030040631.wav" type="audio/wav"></audio></td>
+              <td width="12%" style="text-align: center;"><audio controls="" ><source src="static/audio_sample/rhythm/GT/wav_gt_biaobei_tx_02030040641.wav" type="audio/wav"></audio></td>
+              <td width="12%" style="text-align: center;"><audio controls="" ><source src="static/audio_sample/rhythm/GradTTS/wav_pred_biaobei_tx_02030040641.wav" type="audio/wav"></audio></td>
+              <td width="12%" style="text-align: center;"><audio controls="" ><source src="static/audio_sample/rhythm/CSEDT/wav_pred_biaobei_tx_02030040641.wav" type="audio/wav"></audio></td>
+              <td width="12%" style="text-align: center;"><audio controls="" ><source src="static/audio_sample/rhythm/AS_wo_lort/wav_pred_biaobei_tx_02030040641.wav" type="audio/wav"></audio></td>
+              <td width="12%" style="text-align: center;"><audio controls="" ><source src="static/audio_sample/rhythm/AS-Speech/wav_pred_biaobei_tx_02030040641.wav" type="audio/wav"></audio></td>
+            </tr>
+            <tr>
+              <td width="28%" style="text-align: center;"><p>Afraid</p></td>
+              <td width="12%" style="text-align: center;"><audio controls="" ><source src="static/audio_sample/rhythm/Prompt/wav_gt_biaobei_tx_01010050172.wav" type="audio/wav"></audio></td>
+              <td width="12%" style="text-align: center;"><audio controls="" ><source src="static/audio_sample/rhythm/GT/wav_gt_biaobei_tx_01010050280.wav" type="audio/wav"></audio></td>
+              <td width="12%" style="text-align: center;"><audio controls="" ><source src="static/audio_sample/rhythm/GradTTS/wav_pred_biaobei_tx_01010050280.wav" type="audio/wav"></audio></td>
+              <td width="12%" style="text-align: center;"><audio controls="" ><source src="static/audio_sample/rhythm/CSEDT/wav_pred_biaobei_tx_01010050280.wav" type="audio/wav"></audio></td>
+              <td width="12%" style="text-align: center;"><audio controls="" ><source src="static/audio_sample/rhythm/AS_wo_lort/wav_pred_biaobei_tx_01010050280.wav" type="audio/wav"></audio></td>
+              <td width="12%" style="text-align: center;"><audio controls="" ><source src="static/audio_sample/rhythm/AS-Speech/wav_pred_biaobei_tx_01010050280.wav" type="audio/wav"></audio></td>
+            </tr>
+            <tr>
+              <td width="28%" style="text-align: center;"><p>News</p></td>
+              <td width="12%" style="text-align: center;"><audio controls="" ><source src="static/audio_sample/rhythm/Prompt/wav_gt_biaobei_tx_01020060547.wav" type="audio/wav"></audio></td>
+              <td width="12%" style="text-align: center;"><audio controls="" ><source src="static/audio_sample/rhythm/GT/wav_gt_biaobei_tx_01020060421.wav" type="audio/wav"></audio></td>
+              <td width="12%" style="text-align: center;"><audio controls="" ><source src="static/audio_sample/rhythm/GradTTS/wav_pred_biaobei_tx_01020060421.wav" type="audio/wav"></audio></td>
+              <td width="12%" style="text-align: center;"><audio controls="" ><source src="static/audio_sample/rhythm/CSEDT/wav_pred_biaobei_tx_01020060421.wav" type="audio/wav"></audio></td>
+              <td width="12%" style="text-align: center;"><audio controls="" ><source src="static/audio_sample/rhythm/AS_wo_lort/wav_pred_biaobei_tx_01020060421.wav" type="audio/wav"></audio></td>
+              <td width="12%" style="text-align: center;"><audio controls="" ><source src="static/audio_sample/rhythm/AS-Speech/wav_pred_biaobei_tx_01020060421.wav" type="audio/wav"></audio></td>
+            </tr>
+            <tr>
+              <td width="28%" style="text-align: center;"><p>Story</p></td>
+              <td width="12%" style="text-align: center;"><audio controls="" ><source src="static/audio_sample/rhythm/Prompt/wav_gt_biaobei_tx_02030070521.wav" type="audio/wav"></audio></td>
+              <td width="12%" style="text-align: center;"><audio controls="" ><source src="static/audio_sample/rhythm/GT/wav_gt_biaobei_tx_02030070181.wav" type="audio/wav"></audio></td>
+              <td width="12%" style="text-align: center;"><audio controls="" ><source src="static/audio_sample/rhythm/GradTTS/wav_pred_biaobei_tx_02030070181.wav" type="audio/wav"></audio></td>
+              <td width="12%" style="text-align: center;"><audio controls="" ><source src="static/audio_sample/rhythm/CSEDT/wav_pred_biaobei_tx_02030070181.wav" type="audio/wav"></audio></td>
+              <td width="12%" style="text-align: center;"><audio controls="" ><source src="static/audio_sample/rhythm/AS_wo_lort/wav_pred_biaobei_tx_02030070181.wav" type="audio/wav"></audio></td>
+              <td width="12%" style="text-align: center;"><audio controls="" ><source src="static/audio_sample/rhythm/AS-Speech/wav_pred_biaobei_tx_02030070181.wav" type="audio/wav"></audio></td>
+            </tr>
+            <tr>
+              <td width="28%" style="text-align: center;"><p>Poetry</p></td>
+              <td width="12%" style="text-align: center;"><audio controls="" ><source src="static/audio_sample/rhythm/Prompt/wav_gt_biaobei_tx_02030090082.wav" type="audio/wav"></audio></td>
+              <td width="12%" style="text-align: center;"><audio controls="" ><source src="static/audio_sample/rhythm/GT/wav_gt_biaobei_tx_02030090475.wav" type="audio/wav"></audio></td>
+              <td width="12%" style="text-align: center;"><audio controls="" ><source src="static/audio_sample/rhythm/GradTTS/wav_pred_biaobei_tx_02030090475.wav" type="audio/wav"></audio></td>
+              <td width="12%" style="text-align: center;"><audio controls="" ><source src="static/audio_sample/rhythm/CSEDT/wav_pred_biaobei_tx_02030090475.wav" type="audio/wav"></audio></td>
+              <td width="12%" style="text-align: center;"><audio controls="" ><source src="static/audio_sample/rhythm/AS_wo_lort/wav_pred_biaobei_tx_02030090475.wav" type="audio/wav"></audio></td>
+              <td width="12%" style="text-align: center;"><audio controls="" ><source src="static/audio_sample/rhythm/AS-Speech/wav_pred_biaobei_tx_02030090475.wav" type="audio/wav"></audio></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<div class="hero-body">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column">
+        <h2 class="title is-3">Style Story Demo</h2>
+        <div class="content">
+          <p>
+            Audio prompts from Style60 (Mandarin) Test-Set (unseen)
+          </p>
+          <div class="centered-text">
+            <h4>Transcriptions: (Prompt_id + Text)</h4>
+            <ul>
+              <li>(02) 开心的一天，我沿着海滩漫步，感受着清新的空气。</li>
+              <li>(02) 阳光透过云层洒在我身上，温暖而快乐。</li>
+              <li>(05) 突然，天空阴云密布，风声凄厉，让我感到一丝不安和恐惧。</li>
+              <li>(04) 望着周围，没有朋友的陪伴，让我有点感到伤心。</li>
+              <li>(05) 一刹那间，雷电交加，暴雨如注，我匆忙找了个树荫躲避。</li>
+              <li>(05) 树叶被风吹落，我被惊吓到了，身体不由得发抖。</li>
+              <li>(04) 在暴风雨中，我听到了一个孤独的鸟叫声，让我感到一种伤感。</li>
+              <li>(03) 手中的雨伞被大风吹走了，我愤怒地看着无情的大自然。</li>
+              <li>(01) 突然，风停了，雨渐渐停歇。</li>
+              <li>(02) 什么事都不可以阻挡我的快乐，我要去喝奶茶。</li>
+              <li>(04) 途中，我看到一只受伤的小鸟，悲伤涌上心头。</li>
+              <li>(01) 我蹲下身，轻抚小鸟，愿它早日康复。</li>
+              <li>(03) 可恶，才刚喝了几口，奶茶就被别人撞洒了，无比的愤怒充斥着我的内心。</li>
+              <li>(04) 看着地上的奶茶，感到伤心，为什么倒霉的总是我，好难过。</li>
+              <li>(01) 回到家里，看到准备好了的饭菜。</li>
+              <li>(02) 家里是永远温暖的港湾，我爱我家，幸福快乐！</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="columns is-centered has-text-centered  is-full-width">
+      <table class="table" style="background-color: transparent;">
+        <thead>
+          <tr>
+            <th align="center"><strong>Prompt_01</strong></th>
+            <th align="center"><strong>Prompt_02</strong></th>
+            <th align="center"><strong>Prompt_03</strong></th>
+            <th align="center"><strong>Prompt_04</strong></th>
+            <th align="center"><strong>Prompt_05</strong></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+<!--            <td width="30%" style="text-align: center;"><p></p></td>-->
+            <td width="20%" style="text-align: center;"><audio controls="" ><source src="static/audio_sample/rhythm2/Prompt/Prompt_01.wav" type="audio/wav"></audio></td>
+            <td width="20%" style="text-align: center;"><audio controls="" ><source src="static/audio_sample/rhythm2/Prompt/Prompt_02.wav" type="audio/wav"></audio></td>
+            <td width="20%" style="text-align: center;"><audio controls="" ><source src="static/audio_sample/rhythm2/Prompt/Prompt_03.wav" type="audio/wav"></audio></td>
+            <td width="20%" style="text-align: center;"><audio controls="" ><source src="static/audio_sample/rhythm2/Prompt/Prompt_04.wav" type="audio/wav"></audio></td>
+            <td width="20%" style="text-align: center;"><audio controls="" ><source src="static/audio_sample/rhythm2/Prompt/Prompt_05.wav" type="audio/wav"></audio></td>
+          </tr>
+        <thead>
+          <tr>
+            <th align="center" colspan="5"><strong>Story Sample</strong></th>
+          </tr>
+        </thead>
+          <tr>
+            <td colspan="5" style="text-align: center;"><audio controls="" style="width: 75%;"><source src="static/audio_sample/rhythm2/text.wav" type="audio/wav"></audio></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <div class="content">
+          <p>
+            Website source code based on the <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a> project page.
+          </p>
+        </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
